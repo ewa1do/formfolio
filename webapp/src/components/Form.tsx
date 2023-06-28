@@ -1,6 +1,7 @@
 import { useContext } from 'react'
 import { Input } from './Input'
 import { UserContext } from '../contexts/userContext'
+import { TextArea } from './Textarea'
 
 const userInfo = [
     {
@@ -63,6 +64,8 @@ export function Form() {
                     type={'text'}
                 />
             ))}
+
+            <TextArea fieldName="skills" />
 
             <button onClick={handleRegister}>Save!</button>
         </form>

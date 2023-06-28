@@ -1,6 +1,5 @@
 class Utilities {
     /**
-     *
      * @param name the name to be formatted MUST HAVE PATTERN word-word-...
      * @param view optional param to check if the function will be rendered as a view
      * @returns a string with a name sanitized
@@ -16,7 +15,6 @@ class Utilities {
     }
 
     /**
-     *
      * @param delimiter: string to be use to split the matches
      * @returns An object from the localStorage with all the data corresponding to the delimeter
      */

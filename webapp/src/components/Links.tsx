@@ -1,6 +1,6 @@
 import { MouseEvent } from 'react'
 import { UserLinks } from '../models/ProfileData'
-import Utils from '../utils/Utilities'
+import Utils from '../utils'
 
 export function Links() {
     const links = Utils.getFields<UserLinks>('formfolio-link')

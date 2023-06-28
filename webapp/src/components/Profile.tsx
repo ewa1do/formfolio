@@ -5,11 +5,11 @@ import { WorkExperience } from './WorkExperience'
 
 export function Profile() {
     return (
-        <>
+        <main>
             <UserInfo />
             <WorkExperience />
             <Skills />
             <Links />
-        </>
+        </main>
     )
 }

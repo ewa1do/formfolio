@@ -1,5 +1,5 @@
-import { ChangeEvent, useState } from 'react'
-import Utils from '../utils/Utilities'
+import Utils from '../utils'
+import { useInput } from '../hooks/useInput'
 
 interface Props {
     fieldName: string
@@ -7,27 +7,7 @@ interface Props {
 }
 
 export function Input({ fieldName, type }: Props) {
-    const [inputState, setInputState] = useState({
-        [fieldName]: localStorage.getItem(fieldName),
-    })
-
-    function handleInput(event: ChangeEvent<HTMLInputElement>) {
-        const target = event.target as HTMLInputElement
-
-        const [field] = Object.keys(inputState)
-        const inputValue = target.value
-
-        setInputState({
-            ...inputState,
-            [field]: inputValue,
-        })
-
-        localStorage.setItem(field, inputValue)
-    }
-
-    function getValue(name: string) {
-        return localStorage.getItem(name) || ''
-    }
+    const { getValue, handleInput } = useInput(fieldName)
 
     return (
         <div>
