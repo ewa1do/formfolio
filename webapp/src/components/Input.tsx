@@ -1,5 +1,5 @@
 import { ChangeEvent, useState } from 'react'
-import { satitizeInput } from '../utils/SanitizeInput'
+import Utils from '../utils/Utilities'
 
 interface Props {
     fieldName: string
@@ -32,7 +32,7 @@ export function Input({ fieldName, type }: Props) {
     return (
         <div>
             <label className="text-2xl" htmlFor={fieldName}>
-                {satitizeInput(fieldName, true)}:
+                {Utils.sanitizeInput(fieldName, true)}:
             </label>
             <input
                 type={type}
