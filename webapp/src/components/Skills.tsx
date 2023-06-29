@@ -1,17 +1,25 @@
+import Utils from '../utils'
+interface ISkills {
+    skills: string
+}
+
 export function Skills() {
+    const { skills } = Utils.getFields<ISkills>('skills')
+
+    const splittedSkills = skills.split(',').map((skill) => {
+        return skill.trim().replace('/n', '')
+    })
+
     return (
-        <div>
+        <section className="my-2">
             <h3>Skills</h3>
             <ul>
-                <li>javascript</li>
-                <li>react.js</li>
-                <li>next.js</li>
-                <li>node.js</li>
-                <li>express.js</li>
-                <li>mysql</li>
-                <li>php</li>
-                <li>laravel</li>
+                {splittedSkills.map((skill) => (
+                    <li key={`skill-${skill}`}>
+                        <span className="capitalize">{skill}</span>
+                    </li>
+                ))}
             </ul>
-        </div>
+        </section>
     )
 }

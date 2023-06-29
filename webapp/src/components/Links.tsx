@@ -1,3 +1,11 @@
+import {
+    IoLogoLinkedin,
+    IoLogoTwitter,
+    IoLogoGithub,
+    IoCloudSharp,
+    IoLogoBehance,
+} from 'react-icons/io5'
+import { PiSuitcaseSimple } from 'react-icons/pi'
 import { MouseEvent } from 'react'
 import { UserLinks } from '../models/ProfileData'
 import Utils from '../utils'
@@ -20,20 +28,32 @@ export function Links() {
         }
     }
 
+    const iconsMap: any = {
+        linkedin: <IoLogoLinkedin />,
+        twitter: <IoLogoTwitter />,
+        portfolio: <PiSuitcaseSimple />,
+        resume: <IoCloudSharp />,
+        github: <IoLogoGithub />,
+        behance: <IoLogoBehance />,
+    }
+
     return (
-        <ul>
-            {Object.entries(links).map(([value, link]) => {
-                return (
-                    <li key={`link-${value}`}>
-                        <button
-                            data-link={link}
-                            onClick={getMetadataAndCopyToClipboard}
-                        >
-                            {value}
-                        </button>
-                    </li>
-                )
-            })}
-        </ul>
+        <section>
+            <h3>Links</h3>
+            <ul>
+                {Object.entries(links).map(([value, link]) => {
+                    return (
+                        <li key={`link-${value}`}>
+                            <i
+                                data-link={link}
+                                onClick={getMetadataAndCopyToClipboard}
+                            >
+                                {iconsMap[value]}
+                            </i>
+                        </li>
+                    )
+                })}
+            </ul>
+        </section>
     )
 }
