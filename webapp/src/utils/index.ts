@@ -1,4 +1,41 @@
+import { ValidInfo } from '../models'
+
 class Utilities {
+    protected userInfo = [
+        {
+            name: 'name',
+        },
+        {
+            name: 'lastname',
+        },
+        {
+            name: 'job_title',
+        },
+        {
+            name: 'email',
+            type: 'email',
+        },
+        {
+            name: 'phone_number',
+            type: 'number',
+        },
+    ]
+
+    protected userLinks = [
+        {
+            name: 'twitter',
+        },
+        {
+            name: 'linkedin',
+        },
+        {
+            name: 'portfolio',
+        },
+        {
+            name: 'resume',
+        },
+    ]
+
     /**
      * @param name the name to be formatted MUST HAVE PATTERN word-word-...
      * @param view optional param to check if the function will be rendered as a view
@@ -24,6 +61,18 @@ class Utilities {
             .map((arr) => [this.sanitizeInput(arr[0]), arr[1]])
 
         return Object.fromEntries(data)
+    }
+
+    private getInfo(arr: ValidInfo[]) {
+        return arr
+    }
+
+    public getUserInfo() {
+        return this.getInfo(this.userInfo)
+    }
+
+    public getUserLinks() {
+        return this.getInfo(this.userLinks)
     }
 }
 
