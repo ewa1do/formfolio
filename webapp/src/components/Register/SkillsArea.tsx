@@ -1,10 +1,10 @@
-import { useInput } from '../hooks/useInput'
+import { useInput } from '../../hooks/useInput'
 
 interface Props {
     fieldName: string
 }
 
-export function TextArea({ fieldName }: Props) {
+export function SkillsArea({ fieldName }: Props) {
     const { handleInput, getValue } = useInput(fieldName)
 
     return (

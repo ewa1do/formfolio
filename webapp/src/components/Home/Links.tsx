@@ -7,17 +7,21 @@ import {
 } from 'react-icons/io5'
 import { PiSuitcaseSimple } from 'react-icons/pi'
 import { MouseEvent } from 'react'
-import { UserLinks } from '../models/ProfileData'
-import Utils from '../utils'
+import { LOCALSTORAGE_KEYS, UserLinks } from '../../models'
+import Utils from '../../utils'
 
 export function Links() {
-    const links = Utils.getFields<UserLinks>('formfolio-link')
+    const links = Utils.getFields<UserLinks>(LOCALSTORAGE_KEYS.LINK)
+
+    console.log(links)
 
     async function getMetadataAndCopyToClipboard(
         e: MouseEvent<HTMLButtonElement>
     ) {
         const target = e.target as HTMLButtonElement
-        const metadata = target.getAttribute('data-link') as string
+
+        const linkbtn = target.closest('button')
+        const metadata = linkbtn?.getAttribute('data-link') as string
 
         try {
             await navigator.clipboard.writeText(metadata)
@@ -39,17 +43,17 @@ export function Links() {
 
     return (
         <section>
-            <h3>Links</h3>
-            <ul>
+            <h3 className="font-montserrat">Links</h3>
+            <ul className="flex">
                 {Object.entries(links).map(([value, link]) => {
                     return (
                         <li key={`link-${value}`}>
-                            <i
+                            <button
                                 data-link={link}
                                 onClick={getMetadataAndCopyToClipboard}
                             >
                                 {iconsMap[value]}
-                            </i>
+                            </button>
                         </li>
                     )
                 })}

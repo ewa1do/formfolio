@@ -1,12 +1,12 @@
-import { UserInformation } from '../models/ProfileData'
-import Utils from '../utils'
+import { LOCALSTORAGE_KEYS, UserInformation } from '../../models'
+import Utils from '../../utils'
 
 export function UserInfo() {
     const { name, job_title, lastname, email, phone_number } =
-        Utils.getFields<UserInformation>('formfolio-profile')
+        Utils.getFields<UserInformation>(LOCALSTORAGE_KEYS.PROFILE)
 
     return (
-        <section className="my-2">
+        <section className="my-2 ">
             <h2 className="text-3xl capitalize">
                 {name} {lastname}
             </h2>

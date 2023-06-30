@@ -1,7 +1,7 @@
 import { useState } from 'react'
 // import './App.css'
-import { Form } from './components/Form'
-import { Profile } from './components/Profile'
+import { RegisterForm } from './components/Register/RegisterForm'
+import { Profile } from './components/Home/Profile'
 import { UserContext } from './contexts/userContext'
 import { Navbar } from './components/Navbar'
 
@@ -14,7 +14,7 @@ function App() {
         <UserContext.Provider value={{ isRegistered, setIsRegistered }}>
             <>
                 <Navbar />
-                {!isRegistered ? <Form /> : <Profile />}
+                {!isRegistered ? <RegisterForm /> : <Profile />}
             </>
         </UserContext.Provider>
     )

@@ -1,10 +1,11 @@
-import Utils from '../utils'
+import { LOCALSTORAGE_KEYS } from '../../models'
+import Utils from '../../utils'
 interface ISkills {
     skills: string
 }
 
 export function Skills() {
-    const { skills } = Utils.getFields<ISkills>('skills')
+    const { skills } = Utils.getFields<ISkills>(LOCALSTORAGE_KEYS.SKILLS)
 
     const splittedSkills = skills.split(',').map((skill) => {
         return skill.trim().replace('/n', '')
