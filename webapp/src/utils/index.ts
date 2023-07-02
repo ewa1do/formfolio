@@ -1,6 +1,8 @@
-import { ValidInfo } from '../models'
+import { ValidInfo, WorkExperience } from '../models'
 
 class Utilities {
+    protected defaultWorkExpLength = 3
+
     protected userInfo = [
         {
             name: 'name',
@@ -73,6 +75,22 @@ class Utilities {
 
     public getUserLinks() {
         return this.getInfo(this.userLinks)
+    }
+
+    getDefaultWorkExpLength() {
+        return this.defaultWorkExpLength
+    }
+
+    /**
+     * @param length number of initial objects inside the aray
+     * @returns an arary of type WorkExperience depending of the length provided
+     */
+    generateInitialData(length = this.defaultWorkExpLength): WorkExperience[] {
+        return Array.from({ length }, () => ({
+            charge: '',
+            company: '',
+            description: '',
+        }))
     }
 }
 

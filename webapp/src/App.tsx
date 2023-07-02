@@ -1,6 +1,5 @@
 import { useState } from 'react'
-// import './App.css'
-import { RegisterForm } from './components/Register/RegisterForm'
+import { RegisterForm } from './components/Register/'
 import { Profile } from './components/Home/Profile'
 import { UserContext } from './contexts/userContext'
 import { Navbar } from './components/Navbar'

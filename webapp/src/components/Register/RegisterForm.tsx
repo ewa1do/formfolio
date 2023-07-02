@@ -4,6 +4,7 @@ import { SkillsArea } from './SkillsArea'
 import { InputData } from './InputData'
 import { LOCALSTORAGE_KEYS } from '../../models'
 import Utils from '../../utils'
+import { WorkExperience } from './WorkExperience'
 
 const appMessages = [
     'Welcome to formfolio, the only app you will need to fill job forms, lets begin adding your personal information',
@@ -36,24 +37,8 @@ export function RegisterForm() {
             data={Utils.getUserInfo()}
             validField="profile"
         />,
-        <>
-            {[0, 1, 2].map((_) => {
-                return (
-                    <>
-                        <input
-                            type="text"
-                            placeholder="charge exg: Backend developer"
-                        />{' '}
-                        <span>@</span>{' '}
-                        <input
-                            type="text"
-                            placeholder="company name: exg. Microsoft"
-                        />
-                        <button onClick={increaseOption}>next</button>
-                    </>
-                )
-            })}
-        </>,
+        <WorkExperience onClick={increaseOption} />,
+
         <InputData
             data={Utils.getUserLinks()}
             onClick={increaseOption}

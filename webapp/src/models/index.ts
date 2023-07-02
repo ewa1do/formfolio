@@ -3,6 +3,7 @@ export enum LOCALSTORAGE_KEYS {
     LINK = 'formfolio-link',
     PROFILE = 'formfolio-profile',
     SKILLS = 'formfolio-skills',
+    WORK_EXP = 'formfolio-work-experience',
 }
 
 export interface UserInformation {
@@ -24,4 +25,10 @@ export interface ValidInfo {
     name: string
     type?: string
     icon?: string
+}
+
+export interface WorkExperience {
+    charge: string
+    company: string
+    description: string
 }
