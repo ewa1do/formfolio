@@ -13,7 +13,7 @@ import Utils from '../../utils'
 export function Links() {
     const links = Utils.getFields<UserLinks>(LOCALSTORAGE_KEYS.LINK)
 
-    console.log(links)
+    // console.log(links)
 
     async function getMetadataAndCopyToClipboard(
         e: MouseEvent<HTMLButtonElement>

@@ -2,7 +2,7 @@ import { CoverLetter } from './CoverLetter'
 import { Links } from './Links'
 import { Skills } from './Skills'
 import { UserInfo } from './UserInfo'
-import { WorkExperience } from './WorkExperience'
+import { WorkExperienceComponent } from './WorkExperience'
 import { ProfileMobile } from './ProfileMobile'
 
 import useScreenSize from '../../hooks/useScreenSize'
@@ -20,7 +20,7 @@ export function Profile() {
             <main className="w-full flex flex-row justify-between">
                 <section>
                     <UserInfo />
-                    <WorkExperience />
+                    <WorkExperienceComponent />
                     <Skills />
                     <Links />
                 </section>

@@ -5,7 +5,7 @@ import { CoverLetter } from './CoverLetter'
 import { Links } from './Links'
 import { Skills } from './Skills'
 import { UserInfo } from './UserInfo'
-import { WorkExperience } from './WorkExperience'
+import { WorkExperienceComponent } from './WorkExperience'
 
 interface Props {
     handler: () => void
@@ -33,7 +33,7 @@ export function ProfileMobile() {
             <main className="font-montserrat flex flex-col w-4/5 ml-[10%]">
                 <section>
                     <UserInfo />
-                    <WorkExperience />
+                    <WorkExperienceComponent />
                     <Skills />
                     <Links />
                 </section>

@@ -1,12 +1,44 @@
-export function WorkExperience() {
+import { LOCALSTORAGE_KEYS, WorkExperience } from '../../models'
+import Utils from '../../utils'
+
+interface Experience {
+    experience: string
+}
+
+export function WorkExperienceComponent() {
+    const { experience } = Utils.getFields<Experience>(
+        LOCALSTORAGE_KEYS.WORK_EXP
+    )
+
+    let filledExperience: WorkExperience[] = JSON.parse(experience)
+
+    filledExperience = filledExperience.filter((obj) => {
+        return Object.values(obj).every((value) => value)
+    })
+
     return (
         <section className="my-2">
             <h2>Work Experience</h2>
 
-            <article>
-                <h3>Backend Developer</h3>
-                <p>This is a dummy text for the work experience</p>
-            </article>
+            {filledExperience ? (
+                filledExperience.map(({ charge, company, description }) => {
+                    return (
+                        <article className="my-2">
+                            <h3>
+                                {charge} @ {company}
+                            </h3>
+                            <p>{description}</p>
+                        </article>
+                    )
+                })
+            ) : (
+                <article>
+                    <p>
+                        Add some experience, rememeber that everything counts.
+                        Bootcamps, freelancing...
+                    </p>
+                </article>
+            )}
         </section>
     )
 }
