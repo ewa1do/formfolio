@@ -10,12 +10,16 @@ export function WorkExperienceComponent() {
         LOCALSTORAGE_KEYS.WORK_EXP
     )
 
-    let filledExperience: WorkExperience[] = JSON.parse(experience)
+    let filledExperience: WorkExperience[] | null =
+        experience && JSON?.parse(experience)
 
-    filledExperience = filledExperience.filter((obj) => {
-        return Object.values(obj).every((value) => value)
-    })
+    filledExperience = filledExperience
+        ? filledExperience.filter((obj) => {
+              return Object.values(obj).every((value) => value)
+          })
+        : null
 
+    console.log(filledExperience)
     return (
         <section className="my-2">
             <h2>Work Experience</h2>
