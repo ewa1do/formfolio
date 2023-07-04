@@ -7,16 +7,14 @@ export function useWorkExperience() {
         JSON.parse(localStorage.getItem(LOCALSTORAGE_KEYS.WORK_EXP))
     )
 
-    useEffect(() => {
-        if (!workExp) {
-            setWorkExp(Utils.generateInitialData())
+    if (!workExp) {
+        setWorkExp(Utils.generateInitialData())
 
-            localStorage.setItem(
-                LOCALSTORAGE_KEYS.WORK_EXP,
-                JSON.stringify(Utils.generateInitialData())
-            )
-        }
-    }, [])
+        localStorage.setItem(
+            LOCALSTORAGE_KEYS.WORK_EXP,
+            JSON.stringify(Utils.generateInitialData())
+        )
+    }
 
     function handleStateIndex(
         event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,

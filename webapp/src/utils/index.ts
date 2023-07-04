@@ -92,6 +92,33 @@ class Utilities {
             description: '',
         }))
     }
+
+    async sendOpenAIRequest(prompt: string) {
+        const APIKEY = import.meta.env.VITE_APIKEY
+        const URL = import.meta.env.VITE_REQUEST_URL
+
+        try {
+            const res = await fetch(URL, {
+                method: 'POST',
+                headers: {
+                    'Content-type': 'Application/json',
+                    Authorization: `Bearer ${APIKEY}`,
+                },
+                body: JSON.stringify({
+                    model: 'text-davinci-003',
+                    prompt,
+                    max_tokens: 400,
+                    temperature: 0.7,
+                }),
+            })
+
+            const data = await res.json()
+
+            return data.choices[0].text
+        } catch (error) {
+            console.error('ERROR', error)
+        }
+    }
 }
 
 export default new Utilities()
