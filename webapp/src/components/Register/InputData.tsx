@@ -1,4 +1,4 @@
-import { Input } from '../Input'
+import { Input } from '../UI/Input'
 
 type ValidData = {
     name: string

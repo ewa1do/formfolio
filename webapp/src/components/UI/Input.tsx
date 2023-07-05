@@ -1,5 +1,5 @@
-import Utils from '../utils'
-import { useInput } from '../hooks/useInput'
+import Utils from '../../utils'
+import { useInput } from '../../hooks/useInput'
 
 interface Props {
     fieldName: string

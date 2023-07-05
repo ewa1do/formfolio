@@ -1,5 +1,6 @@
 import { LOCALSTORAGE_KEYS, WorkExperience } from '../../models'
 import Utils from '../../utils'
+import { Title } from '../UI/Title'
 
 interface Experience {
     experience: string
@@ -19,10 +20,10 @@ export function WorkExperienceComponent() {
           })
         : null
 
-    console.log(filledExperience)
     return (
         <section className="my-2">
-            <h2>Work Experience</h2>
+            {/* <h2>Work Experience</h2> */}
+            <Title text="Work Experience" />
 
             {filledExperience ? (
                 filledExperience.map(({ charge, company, description }) => {

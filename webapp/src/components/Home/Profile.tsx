@@ -17,8 +17,8 @@ export function Profile() {
         return <ProfileMobile />
     } else
         return (
-            <main className="w-full flex flex-row justify-between">
-                <section>
+            <main className="w-full flex flex-row justify-between bg-dark">
+                <section className="w-3/6">
                     <UserInfo />
                     <WorkExperienceComponent />
                     <Skills />

@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { RegisterForm } from './components/Register/'
 import { Profile } from './components/Home/Profile'
 import { UserContext } from './contexts/userContext'
-import { Navbar } from './components/Navbar'
+import { Navbar } from './components/UI/Navbar'
 
 function App() {
     const [isRegistered, setIsRegistered] = useState<boolean>(
