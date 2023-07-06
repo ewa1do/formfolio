@@ -9,11 +9,10 @@ import { PiSuitcaseSimple } from 'react-icons/pi'
 import { MouseEvent } from 'react'
 import { LOCALSTORAGE_KEYS, UserLinks } from '../../models'
 import Utils from '../../utils'
+import { Title } from '../UI/Title'
 
 export function Links() {
     const links = Utils.getFields<UserLinks>(LOCALSTORAGE_KEYS.LINK)
-
-    // console.log(links)
 
     async function getMetadataAndCopyToClipboard(
         e: MouseEvent<HTMLButtonElement>
@@ -43,11 +42,14 @@ export function Links() {
 
     return (
         <section>
-            <h3 className="font-montserrat">Links</h3>
+            <Title text="Links" />
             <ul className="flex">
                 {Object.entries(links).map(([value, link]) => {
                     return (
-                        <li key={`link-${value}`}>
+                        <li
+                            key={`link-${value}`}
+                            className="text-2xl mr-1 md:mr-3 border-2 p-1 rounded-md flex border-aqua-50"
+                        >
                             <button
                                 data-link={link}
                                 onClick={getMetadataAndCopyToClipboard}

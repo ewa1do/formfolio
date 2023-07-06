@@ -14,14 +14,15 @@ export function Skills() {
 
     let colors = ['red', 'teal', 'green', 'orange', 'yellow', 'violet']
 
-    function setBorders(colors: string[], opacity = 700) {
+    function setBorders(colors: string[], opacity = '700') {
         return colors.map((color) => `border-${color}-${opacity}`)
     }
-    colors = setBorders(colors)
 
     function randomizeIdx(length: number) {
         return Math.floor(Math.random() * length)
     }
+
+    colors = setBorders(colors)
 
     return (
         <section className="my-2">
