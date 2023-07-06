@@ -21,18 +21,32 @@ export function WorkExperienceComponent() {
         : null
 
     return (
-        <section className="my-2">
-            {/* <h2>Work Experience</h2> */}
+        <section className="my-2 md:my-8">
             <Title text="Work Experience" />
 
             {filledExperience ? (
                 filledExperience.map(({ charge, company, description }) => {
                     return (
-                        <article className="my-2">
-                            <h3>
-                                {charge} @ {company}
+                        <article
+                            key={`work-exp-${company}`}
+                            className={`my-2 ${
+                                filledExperience && filledExperience?.length > 1
+                                    ? 'my-6'
+                                    : ''
+                            }`}
+                        >
+                            <h3 className="text-base md:text-xl lg:text-2xl capitalize">
+                                <span className="underline decoration-aqua-50 decoration-2">
+                                    {charge}
+                                </span>{' '}
+                                <span className="text-aqua-50">@</span>{' '}
+                                <span className="underline decoration-aqua-50 decoration-2">
+                                    {company}
+                                </span>
                             </h3>
-                            <p>{description}</p>
+                            <p className="text-xs md:text-sm lg:text-base xl:text-lg 2xl:text-xl lg:w-4/5 ">
+                                {description}
+                            </p>
                         </article>
                     )
                 })

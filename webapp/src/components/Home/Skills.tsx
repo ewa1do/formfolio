@@ -1,5 +1,6 @@
 import { LOCALSTORAGE_KEYS } from '../../models'
 import Utils from '../../utils'
+import { Title } from '../UI/Title'
 interface ISkills {
     skills: string
 }
@@ -11,13 +12,37 @@ export function Skills() {
         return skill.trim().replace('/n', '')
     })
 
+    let colors = ['red', 'teal', 'green', 'orange', 'yellow', 'violet']
+
+    function setBorders(colors: string[], opacity = 700) {
+        return colors.map((color) => `border-${color}-${opacity}`)
+    }
+    colors = setBorders(colors)
+
+    function randomizeIdx(length: number) {
+        return Math.floor(Math.random() * length)
+    }
+
     return (
         <section className="my-2">
-            <h3>Skills</h3>
-            <ul>
+            <Title text="Skills" />
+            <ul className="flex flex-wrap">
                 {splittedSkills.map((skill) => (
-                    <li key={`skill-${skill}`}>
-                        <span className="capitalize">{skill}</span>
+                    <li
+                        key={`skill-${skill}`}
+                        className={`border-2 w-fit p-1 rounded-md m-1 text-xs md:text-sm lg:text-base xl:text-lg ${
+                            colors[randomizeIdx(colors.length)]
+                        }`}
+                    >
+                        <span
+                            className={
+                                skill.toLowerCase() !== 'php'
+                                    ? `capitalize`
+                                    : 'uppercase'
+                            }
+                        >
+                            {skill}
+                        </span>
                     </li>
                 ))}
             </ul>
