@@ -5,10 +5,12 @@ import { InputData } from './InputData'
 import { LOCALSTORAGE_KEYS } from '../../models'
 import Utils from '../../utils'
 import { WorkExperience } from './WorkExperience'
+import { Education } from '.'
 
 const appMessages = [
     'Welcome to formfolio, the only app you will need to fill job forms, lets begin adding your personal information',
     'If you have work experience add it if not you can move on, Im sure youre going to find it soon',
+    'Add your last educational background',
     'Add links to your sites, this way it will easier for you to fill forms, just copy and paste',
     'Finally add some skills you have',
 ]
@@ -38,7 +40,7 @@ export function RegisterForm() {
             validField="profile"
         />,
         <WorkExperience onClick={increaseOption} />,
-
+        <Education onClick={increaseOption} />,
         <InputData
             data={Utils.getUserLinks()}
             onClick={increaseOption}
