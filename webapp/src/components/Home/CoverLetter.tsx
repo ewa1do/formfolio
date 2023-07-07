@@ -130,7 +130,10 @@ export function CoverLetter() {
             <div>
                 {coverLetters.map((coverLetter, i) => {
                     return (
-                        <article className="border-2 border-aqua-50 p-1 rounded-md my-8">
+                        <article
+                            className="border-2 border-aqua-50 p-1 rounded-md my-8"
+                            key={`cover-letter-${i}`}
+                        >
                             <h3 className="capitalize">
                                 {coverLetter.charge || 'Default'} @{' '}
                                 {coverLetter.company || 'Unknown'}

@@ -35,13 +35,13 @@ export function WorkExperienceComponent() {
                                     : ''
                             }`}
                         >
-                            <h3 className="text-base md:text-xl lg:text-2xl capitalize">
-                                <span className="underline decoration-aqua-50 decoration-2">
+                            <h3 className="text-base md:text-xl lg:text-2xl">
+                                <span className="underline decoration-aqua-50 decoration-2 capitalize">
                                     {charge}
                                 </span>{' '}
                                 <span className="text-aqua-50">@</span>{' '}
                                 <span className="underline decoration-aqua-50 decoration-2">
-                                    {company}
+                                    {Utils.capitalizeSkill(company)}
                                 </span>
                             </h3>
                             <p className="text-xs md:text-sm lg:text-base xl:text-lg 2xl:text-xl lg:w-4/5 ">

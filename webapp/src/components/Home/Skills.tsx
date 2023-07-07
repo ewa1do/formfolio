@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import { LOCALSTORAGE_KEYS } from '../../models'
 import Utils from '../../utils'
 import { Title } from '../UI/Title'
@@ -12,17 +13,25 @@ export function Skills() {
         return skill.trim().replace('/n', '')
     })
 
-    let colors = ['red', 'teal', 'green', 'orange', 'yellow', 'violet']
-
-    function setBorders(colors: string[], opacity = '700') {
-        return colors.map((color) => `border-${color}-${opacity}`)
-    }
-
     function randomizeIdx(length: number) {
         return Math.floor(Math.random() * length)
     }
 
-    colors = setBorders(colors)
+    useEffect(() => {
+        window.addEventListener('load', () => {
+            const ul = [...document.querySelector('ul')?.children] || []
+
+            if (ul) {
+                ul.forEach((li) => {
+                    li.style.border = `2px solid ${
+                        Utils.getColors()[
+                            randomizeIdx(Utils.getColors().length)
+                        ]
+                    }`
+                })
+            }
+        })
+    }, [])
 
     return (
         <section className="my-2">
@@ -31,19 +40,9 @@ export function Skills() {
                 {splittedSkills.map((skill) => (
                     <li
                         key={`skill-${skill}`}
-                        className={`border-2 w-fit p-1 rounded-md m-1 text-xs md:text-sm lg:text-base xl:text-lg ${
-                            colors[randomizeIdx(colors.length)]
-                        }`}
+                        className={`border-2 w-fit p-1 rounded-md m-1 text-xs md:text-sm lg:text-base xl:text-lg`}
                     >
-                        <span
-                            className={
-                                skill.toLowerCase() !== 'php'
-                                    ? `capitalize`
-                                    : 'uppercase'
-                            }
-                        >
-                            {skill}
-                        </span>
+                        <span>{Utils.capitalizeSkill(skill)}</span>
                     </li>
                 ))}
             </ul>
