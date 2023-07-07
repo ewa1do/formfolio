@@ -6,6 +6,7 @@ import { Links } from './Links'
 import { Skills } from './Skills'
 import { UserInfo } from './UserInfo'
 import { WorkExperienceComponent } from './WorkExperience'
+import { Education } from './Education'
 
 interface Props {
     handler: () => void
@@ -33,9 +34,10 @@ export function ProfileMobile() {
             <main className="font-montserrat flex flex-col w-4/5 ml-[10%]">
                 <section>
                     <UserInfo />
-                    <WorkExperienceComponent />
-                    <Skills />
                     <Links />
+                    <WorkExperienceComponent />
+                    <Education />
+                    <Skills />
                 </section>
                 <ArrowButton
                     handler={handleCoverLetter}

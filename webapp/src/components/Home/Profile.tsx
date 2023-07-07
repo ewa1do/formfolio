@@ -6,6 +6,7 @@ import { WorkExperienceComponent } from './WorkExperience'
 import { ProfileMobile } from './ProfileMobile'
 
 import useScreenSize from '../../hooks/useScreenSize'
+import { Education } from './Education'
 
 export function Profile() {
     const { screenSize, breakpoints } = useScreenSize()
@@ -20,9 +21,10 @@ export function Profile() {
             <main className="w-full flex flex-row justify-between bg-dark">
                 <section className="w-3/6">
                     <UserInfo />
-                    <WorkExperienceComponent />
-                    <Skills />
                     <Links />
+                    <WorkExperienceComponent />
+                    <Education />
+                    <Skills />
                 </section>
                 <CoverLetter />
             </main>
