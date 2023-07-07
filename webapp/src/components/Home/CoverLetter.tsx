@@ -2,6 +2,7 @@ import { ChangeEvent, MouseEvent, useState } from 'react'
 import { LOCALSTORAGE_KEYS } from '../../models'
 import { useOpenAIRequest } from '../../hooks/useOpenAIRequest'
 import Utils from '../../utils'
+import { Title } from '../UI/Title'
 
 interface CoverLetter {
     charge: string
@@ -63,8 +64,6 @@ export function CoverLetter() {
     }
 
     async function handleClick(e: MouseEvent<Element, MouseEvent>) {
-        // const target = e.target as Element
-
         await sendRequest()
 
         if (storedCoverLetters.length > 4) {
@@ -87,24 +86,33 @@ export function CoverLetter() {
         }
     }
 
-    return (
-        <aside className="w-2/5">
-            <h2>Generate Cover letter</h2>
+    function sliceParagraph(paragraph: string) {
+        return paragraph.slice(0, paragraph.length / 6)
+    }
 
-            <form action="">
-                <input
-                    type="text"
-                    name="company"
-                    placeholder="name of the company"
-                    onChange={(e) => handleInputState(e)}
-                />
-                <input
-                    type="text"
-                    name="charge"
-                    id=""
-                    placeholder="charge you are applying"
-                    onChange={(e) => handleInputState(e)}
-                />
+    const defaultClass = `py-2 my-1 mx-2 w-full md:w-4/5`
+
+    return (
+        <aside className="md:w-2/5">
+            <Title text="Generate Cover Letter" />
+
+            <form className="flex flex-col mb-8">
+                <div>
+                    <input
+                        type="text"
+                        name="company"
+                        placeholder="Company name"
+                        onChange={(e) => handleInputState(e)}
+                        className={defaultClass}
+                    />
+                    <input
+                        type="text"
+                        name="charge"
+                        placeholder="Charge you're applying"
+                        onChange={(e) => handleInputState(e)}
+                        className={defaultClass}
+                    />
+                </div>
 
                 <input
                     type="submit"
@@ -112,16 +120,25 @@ export function CoverLetter() {
                         e.preventDefault()
                         handleClick(e)
                     }}
+                    value="Generate!"
+                    className="border-2 border-aqua-50 p-2 mt-2 rounded-md md:w-3/5 ml-2"
                 />
             </form>
 
-            <h3>Last cover letters</h3>
+            <Title text="Last cover letters" />
+
             <div>
                 {coverLetters.map((coverLetter, i) => {
                     return (
-                        <p key={`letter-${i}`} className="my-4">
-                            {coverLetter.letter}
-                        </p>
+                        <article className="border-2 border-aqua-50 p-1 rounded-md my-8">
+                            <h3 className="capitalize">
+                                {coverLetter.charge || 'Default'} @{' '}
+                                {coverLetter.company || 'Unknown'}
+                            </h3>
+                            <p key={`letter-${i}`} className="my-4">
+                                {sliceParagraph(coverLetter.letter)}...
+                            </p>
+                        </article>
                     )
                 })}
             </div>
