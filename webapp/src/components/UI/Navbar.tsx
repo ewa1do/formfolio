@@ -1,3 +1,4 @@
+import { LanguageList } from './LanguageList'
 import { ModeButton } from './ModeButton'
 
 export function Navbar() {
@@ -7,7 +8,8 @@ export function Navbar() {
 
             <div className="flex">
                 <ModeButton />
-                <button>Change language</button>
+                <LanguageList />
+                {/* <button>Change language</button> */}
             </div>
         </nav>
     )

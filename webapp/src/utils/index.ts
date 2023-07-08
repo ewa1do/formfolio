@@ -1,6 +1,7 @@
-import { ValidInfo, WorkExperience } from '../models'
+import { LOCALSTORAGE_KEYS, ValidInfo, WorkExperience } from '../models'
 
 class Utilities {
+    protected languages = ['ES', 'EN']
     protected defaultWorkExpLength = 3
 
     protected userInfo = [
@@ -46,6 +47,14 @@ class Utilities {
         'rgb(161 98 7)',
         'rgb(109 40 217)',
     ]
+
+    public getColors() {
+        return this.colors
+    }
+
+    public getLanguages() {
+        return this.languages
+    }
 
     /**
      * @param name the name to be formatted MUST HAVE PATTERN word-word-...
@@ -162,8 +171,20 @@ class Utilities {
         return wordCapitalized(skill)
     }
 
-    public getColors() {
-        return this.colors
+    /**
+     * gets the preferred language of the device and set it within the LocalStorage
+     */
+    public setFormFolioLanguage() {
+        const preferredClientLanguage = navigator.language
+
+        if (
+            preferredClientLanguage.includes('ES') ||
+            preferredClientLanguage.includes('es')
+        ) {
+            localStorage.setItem(LOCALSTORAGE_KEYS.LANG, 'ES')
+        } else {
+            localStorage.setItem(LOCALSTORAGE_KEYS.LANG, 'EN')
+        }
     }
 }
 

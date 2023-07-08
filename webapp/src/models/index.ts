@@ -6,6 +6,7 @@ export enum LOCALSTORAGE_KEYS {
     WORK_EXP = 'formfolio-work-experience',
     COVER_LETTERS = 'formfolio-cover-letters',
     EDUCATION = 'formfolio-education',
+    LANG = 'formfolio-preferred-language',
 }
 
 export interface UserInformation {
