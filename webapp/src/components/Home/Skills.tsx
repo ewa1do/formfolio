@@ -13,26 +13,6 @@ export function Skills() {
         return skill.trim().replace('/n', '')
     })
 
-    function randomizeIdx(length: number) {
-        return Math.floor(Math.random() * length)
-    }
-
-    useEffect(() => {
-        window.addEventListener('load', () => {
-            const ul = [...document.querySelector('ul')?.children] || []
-
-            if (ul) {
-                ul.forEach((li) => {
-                    li.style.border = `2px solid ${
-                        Utils.getColors()[
-                            randomizeIdx(Utils.getColors().length)
-                        ]
-                    }`
-                })
-            }
-        })
-    }, [])
-
     return (
         <section className="my-2">
             <Title text="Skills" />
