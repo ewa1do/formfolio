@@ -1,4 +1,3 @@
-import { useEffect } from 'react'
 import { LOCALSTORAGE_KEYS } from '../../models'
 import Utils from '../../utils'
 import { Title } from '../UI/Title'

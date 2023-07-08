@@ -1,0 +1,23 @@
+.div {
+    border: 2px solid white;
+    padding: 1px;
+    border-radius: 20px;
+    width: 4rem;
+    height: 2rem;
+}
+
+.button {
+    border: 1px solid white;
+    border-radius: 50%;
+    padding: 6px;
+}
+
+.moveToRight {
+    transform: translateX(124%);
+    transition: all 0.3s ease;
+}
+
+.moveToLeft {
+    transform: translateX(0%);
+    transition: all 0.3s ease;
+}
