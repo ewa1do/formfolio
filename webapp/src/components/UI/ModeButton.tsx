@@ -1,9 +1,10 @@
-import { useState } from 'react'
+import { useContext } from 'react'
 import { BsFillSunFill, BsFillMoonStarsFill } from 'react-icons/bs'
+import { UserContext } from '../../contexts/userContext'
 import classes from './modebutton.module.css'
 
 export function ModeButton() {
-    const [isModeChanged, setIsModeChanged] = useState<boolean>(false)
+    const { isModeChanged, setIsModeChanged } = useContext(UserContext)
 
     function toggleDarkLightMode(
         e: React.MouseEvent<HTMLButtonElement, MouseEvent>
@@ -22,7 +23,7 @@ export function ModeButton() {
     }
 
     return (
-        <div className={classes.div}>
+        <div className={`${classes.div} mx-4`}>
             <button className={classes.button}>
                 <i
                     className={`text-xs ${

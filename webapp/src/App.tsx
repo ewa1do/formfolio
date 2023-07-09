@@ -9,8 +9,17 @@ function App() {
         Boolean(Number(localStorage.getItem('isRegistered')))
     )
 
+    const [isModeChanged, setIsModeChanged] = useState<boolean>(false)
+
     return (
-        <UserContext.Provider value={{ isRegistered, setIsRegistered }}>
+        <UserContext.Provider
+            value={{
+                isRegistered,
+                setIsRegistered,
+                isModeChanged,
+                setIsModeChanged,
+            }}
+        >
             <>
                 <Navbar />
                 {!isRegistered ? <RegisterForm /> : <Profile />}
