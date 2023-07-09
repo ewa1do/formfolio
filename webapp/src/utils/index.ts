@@ -1,4 +1,9 @@
-import { LOCALSTORAGE_KEYS, ValidInfo, WorkExperience } from '../models'
+import {
+    LOCALSTORAGE_KEYS,
+    ValidInfo,
+    WorkExperience,
+    Elements,
+} from '../models'
 
 class Utilities {
     protected languages = ['ES', 'EN']
@@ -103,7 +108,9 @@ class Utilities {
      * @param length number of initial objects inside the aray
      * @returns an arary of type WorkExperience depending of the length provided
      */
-    generateInitialData(length = this.defaultWorkExpLength): WorkExperience[] {
+    public generateInitialWorkExperienceData(
+        length = this.defaultWorkExpLength
+    ): WorkExperience[] {
         return Array.from({ length }, () => ({
             charge: '',
             company: '',
@@ -185,6 +192,25 @@ class Utilities {
         } else {
             localStorage.setItem(LOCALSTORAGE_KEYS.LANG, 'EN')
         }
+    }
+
+    /**
+     *
+     * @param state boolean variable to check which color return. Often used with the context
+     * @param element tailwind element to apply the change (text, decoration, backgroud, etc...)
+     * @returns A tailwind classname with a color based on the state
+     */
+    public changeColorDependingOfMode(state: boolean, element: Elements) {
+        return !state ? element + '-aqua-50' : element + '-aqua-100'
+    }
+
+    /**
+     *
+     * @param paragraph string to be sliced
+     * @returns an sliced string
+     */
+    public sliceParagraph(paragraph: string) {
+        return paragraph.slice(0, paragraph.length / 6)
     }
 }
 

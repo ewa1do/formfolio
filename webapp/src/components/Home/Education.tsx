@@ -1,5 +1,7 @@
 import { LOCALSTORAGE_KEYS } from '../../models'
 import { Title } from '../UI/Title'
+import { useContext } from 'react'
+import { UserContext } from '../../contexts/userContext'
 import utils from '../../utils'
 
 interface IEducation {
@@ -14,17 +16,36 @@ export function Education() {
 
     const filledEducation: IEducation = JSON.parse(education)
 
+    const { isModeChanged } = useContext(UserContext)
+
     return (
         <>
             <Title text="Education" />
 
             {filledEducation ? (
                 <h3 className="text-sm md:text-xl lg:text-2xl ">
-                    <span className="underline decoration-aqua-50 decoration-2 capitalize">
+                    <span
+                        className={`underline ${utils.changeColorDependingOfMode(
+                            isModeChanged,
+                            'decoration'
+                        )} decoration-2 capitalize`}
+                    >
                         {filledEducation.title}
                     </span>{' '}
-                    <span className="text-aqua-50">@</span>{' '}
-                    <span className="underline decoration-aqua-50 decoration-2 capitalize">
+                    <span
+                        className={utils.changeColorDependingOfMode(
+                            isModeChanged,
+                            'text'
+                        )}
+                    >
+                        @
+                    </span>{' '}
+                    <span
+                        className={`underline decoration-2 capitalize ${utils.changeColorDependingOfMode(
+                            isModeChanged,
+                            'decoration'
+                        )}`}
+                    >
                         {filledEducation.institution}
                     </span>
                 </h3>

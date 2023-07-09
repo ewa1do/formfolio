@@ -1,13 +1,17 @@
+import { useContext } from 'react'
 import { LOCALSTORAGE_KEYS, WorkExperience } from '../../models'
-import Utils from '../../utils'
+import utils from '../../utils'
 import { Title } from '../UI/Title'
+import { UserContext } from '../../contexts/userContext'
 
 interface Experience {
     experience: string
 }
 
 export function WorkExperienceComponent() {
-    const { experience } = Utils.getFields<Experience>(
+    const { isModeChanged } = useContext(UserContext)
+
+    const { experience } = utils.getFields<Experience>(
         LOCALSTORAGE_KEYS.WORK_EXP
     )
 
@@ -36,12 +40,29 @@ export function WorkExperienceComponent() {
                             }`}
                         >
                             <h3 className="text-base md:text-xl lg:text-2xl">
-                                <span className="underline decoration-aqua-50 decoration-2 capitalize">
+                                <span
+                                    className={`underline ${utils.changeColorDependingOfMode(
+                                        isModeChanged,
+                                        'decoration'
+                                    )}  decoration-2 capitalize`}
+                                >
                                     {charge}
                                 </span>{' '}
-                                <span className="text-aqua-50">@</span>{' '}
-                                <span className="underline decoration-aqua-50 decoration-2">
-                                    {Utils.capitalizeSkill(company)}
+                                <span
+                                    className={utils.changeColorDependingOfMode(
+                                        isModeChanged,
+                                        'text'
+                                    )}
+                                >
+                                    @
+                                </span>{' '}
+                                <span
+                                    className={`underline ${utils.changeColorDependingOfMode(
+                                        isModeChanged,
+                                        'decoration'
+                                    )} decoration-2`}
+                                >
+                                    {utils.capitalizeSkill(company)}
                                 </span>
                             </h3>
                             <p className="text-xs md:text-sm lg:text-base xl:text-lg 2xl:text-xl lg:w-4/5 ">

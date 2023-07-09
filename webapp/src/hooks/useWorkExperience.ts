@@ -8,11 +8,11 @@ export function useWorkExperience() {
     )
 
     if (!workExp) {
-        setWorkExp(Utils.generateInitialData())
+        setWorkExp(Utils.generateInitialWorkExperienceData())
 
         localStorage.setItem(
             LOCALSTORAGE_KEYS.WORK_EXP,
-            JSON.stringify(Utils.generateInitialData())
+            JSON.stringify(Utils.generateInitialWorkExperienceData())
         )
     }
 

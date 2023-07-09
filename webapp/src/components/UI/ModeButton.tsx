@@ -23,8 +23,12 @@ export function ModeButton() {
     }
 
     return (
-        <div className={`${classes.div} mx-4`}>
-            <button className={classes.button}>
+        <div
+            className={`${classes.div} mx-4 border-2 ${
+                !isModeChanged ? 'border-light' : 'border-dark'
+            }`}
+        >
+            <button className={`${classes.button}`}>
                 <i
                     className={`text-xs ${
                         !isModeChanged ? 'text-aqua-100' : 'text-orange-700'

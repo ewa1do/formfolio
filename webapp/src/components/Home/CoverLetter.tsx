@@ -1,8 +1,9 @@
-import { ChangeEvent, MouseEvent, useState } from 'react'
+import { ChangeEvent, useContext, useState } from 'react'
+import { UserContext } from '../../contexts/userContext'
 import { LOCALSTORAGE_KEYS } from '../../models'
 import { useOpenAIRequest } from '../../hooks/useOpenAIRequest'
-import Utils from '../../utils'
 import { Title } from '../UI/Title'
+import utils from '../../utils'
 
 interface CoverLetter {
     charge: string
@@ -11,9 +12,10 @@ interface CoverLetter {
 }
 
 export function CoverLetter() {
-    const profileInformation = Utils.getFields(LOCALSTORAGE_KEYS.PROFILE)
-    const skills = Utils.getFields(LOCALSTORAGE_KEYS.SKILLS)
-    const workExperience = Utils.getFields(LOCALSTORAGE_KEYS.WORK_EXP)
+    const profileInformation = utils.getFields(LOCALSTORAGE_KEYS.PROFILE)
+    const skills = utils.getFields(LOCALSTORAGE_KEYS.SKILLS)
+    const workExperience = utils.getFields(LOCALSTORAGE_KEYS.WORK_EXP)
+    const { isModeChanged } = useContext(UserContext)
 
     const [letterInput, setLetterInput] = useState<{
         charge: string
@@ -63,7 +65,7 @@ export function CoverLetter() {
         })
     }
 
-    async function handleClick(e: MouseEvent<Element, MouseEvent>) {
+    async function handleClick() {
         await sendRequest()
 
         if (storedCoverLetters.length > 4) {
@@ -86,11 +88,11 @@ export function CoverLetter() {
         }
     }
 
-    function sliceParagraph(paragraph: string) {
-        return paragraph.slice(0, paragraph.length / 6)
-    }
-
-    const defaultClass = `py-2 my-1 mx-2 w-full md:w-4/5`
+    const defaultClass = `py-2 my-1 mx-2 w-full md:w-4/5 bg-transparent rounded-md border-2 ${
+        isModeChanged
+            ? 'border-dark placeholder-[#333]'
+            : 'border-light placeholder-[#ccc]'
+    } `
 
     return (
         <aside className="md:w-2/5">
@@ -118,10 +120,13 @@ export function CoverLetter() {
                     type="submit"
                     onClick={(e) => {
                         e.preventDefault()
-                        handleClick(e)
+                        handleClick()
                     }}
                     value="Generate!"
-                    className="border-2 border-aqua-50 p-2 mt-2 rounded-md md:w-3/5 ml-2"
+                    className={`border-2 ${utils.changeColorDependingOfMode(
+                        isModeChanged,
+                        'border'
+                    )} p-2 mt-2 rounded-md md:w-3/5 ml-2`}
                 />
             </form>
 
@@ -131,7 +136,10 @@ export function CoverLetter() {
                 {coverLetters.map((coverLetter, i) => {
                     return (
                         <article
-                            className="border-2 border-aqua-50 p-1 rounded-md my-8"
+                            className={`border-2 ${utils.changeColorDependingOfMode(
+                                isModeChanged,
+                                'border'
+                            )} p-1 rounded-md my-8`}
                             key={`cover-letter-${i}`}
                         >
                             <h3 className="capitalize">
@@ -139,7 +147,7 @@ export function CoverLetter() {
                                 {coverLetter.company || 'Unknown'}
                             </h3>
                             <p key={`letter-${i}`} className="my-4">
-                                {sliceParagraph(coverLetter.letter)}...
+                                {utils.sliceParagraph(coverLetter.letter)}...
                             </p>
                         </article>
                     )

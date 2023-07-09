@@ -6,13 +6,16 @@ import {
     IoLogoBehance,
 } from 'react-icons/io5'
 import { PiSuitcaseSimple } from 'react-icons/pi'
-import { MouseEvent } from 'react'
+import { MouseEvent, useContext } from 'react'
 import { LOCALSTORAGE_KEYS, UserLinks } from '../../models'
 import Utils from '../../utils'
 import { Title } from '../UI/Title'
+import { UserContext } from '../../contexts/userContext'
 
 export function Links() {
     const links = Utils.getFields<UserLinks>(LOCALSTORAGE_KEYS.LINK)
+
+    const { isModeChanged } = useContext(UserContext)
 
     async function getMetadataAndCopyToClipboard(
         e: MouseEvent<HTMLButtonElement>
@@ -48,7 +51,11 @@ export function Links() {
                     return (
                         <li
                             key={`link-${value}`}
-                            className="text-2xl mr-1 md:mr-3 border-2 p-1 rounded-md flex border-aqua-50"
+                            className={`text-2xl mr-1 md:mr-3 border-2 p-1 rounded-md flex ${
+                                isModeChanged
+                                    ? 'border-aqua-100'
+                                    : 'border-aqua-50'
+                            } `}
                         >
                             <button
                                 data-link={link}

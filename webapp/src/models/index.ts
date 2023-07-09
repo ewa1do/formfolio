@@ -35,3 +35,5 @@ export interface WorkExperience {
     company: string
     description: string
 }
+
+export type Elements = 'border' | 'decoration' | 'text'
