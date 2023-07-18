@@ -3,29 +3,44 @@ import {
     ValidInfo,
     WorkExperience,
     Elements,
+    Langs,
+    FormFolioTexts,
+    InfoView,
 } from '../models'
 
 class Utilities {
-    protected languages = ['ES', 'EN']
+    protected languages: Langs[] = ['ES', 'EN']
     protected defaultWorkExpLength = 3
 
-    protected userInfo = [
+    protected userInfo: InfoView[] = [
         {
             name: 'name',
+            label: {
+                ES: 'Nombre',
+                EN: 'Name',
+            },
         },
         {
             name: 'lastname',
+            label: {
+                ES: 'Apellido',
+                EN: 'Lastname',
+            },
         },
         {
             name: 'job_title',
+            label: {
+                ES: 'Título Profesional',
+                EN: 'Job Title',
+            },
         },
         {
             name: 'email',
             type: 'email',
-        },
-        {
-            name: 'phone_number',
-            type: 'number',
+            label: {
+                EN: 'e-mail',
+                ES: 'e-mail',
+            },
         },
     ]
 
@@ -52,6 +67,72 @@ class Utilities {
         'rgb(161 98 7)',
         'rgb(109 40 217)',
     ]
+
+    protected formfolioTexts: FormFolioTexts = {
+        appMessages: [
+            {
+                EN: 'Welcome to FormFolio, the only app you will need to fill job forms,\nlets begin adding your personal information',
+                ES: 'Bienvenid@ a FormFolio, la única app que necesitarás para llenar formularios de empleo,\n empecemos por agregar tu infomación personal',
+            },
+            {
+                EN: "Add your last work experience if you have, if not don't worry I'm sure you're going to find it soon",
+
+                ES: 'Agrega tu última experiencia laboral, si no posees no te preocupes, estoy seguro que pronto encontrarás algo',
+            },
+            {
+                EN: 'Add your last educational background',
+                ES: 'Agrega la última educacion formal que recibiste',
+            },
+            {
+                EN: 'Add links to your sites, this way it will easier for you to fill forms, just copy and paste',
+                ES: 'Agrega enlaces a tus sitios, así será más facil para ti llenar formularios, solo copia y pega',
+            },
+            {
+                EN: 'Finally add some skills you have',
+                ES: 'Finalmente agrega algunas habilidades que poseas',
+            },
+        ],
+        workExperience: {
+            EN: 'Work Experience',
+            ES: 'Experiencia Laboral',
+        },
+        coverLetter: {
+            generate: {
+                EN: 'Generate Cover Letter',
+                ES: 'Generar Carta de presentación',
+            },
+            history: {
+                EN: 'Last Cover Letters',
+                ES: 'Últimas Cartas',
+            },
+            placeholders: {
+                charge: {
+                    EN: 'Charge you are applying',
+                    ES: 'Cargo al que aplicas',
+                },
+                company: {
+                    EN: 'Company name',
+                    ES: 'Nombre de la empresa',
+                },
+            },
+            button: {
+                EN: 'Generate!',
+                ES: 'Generar!',
+            },
+        },
+        education: {
+            EN: 'Education',
+            ES: 'Educación',
+        },
+        skills: {
+            EN: 'Technical Skills',
+            ES: 'Habilidades Técnicas',
+        },
+    }
+
+    public getAppTexts() {
+        return this.formfolioTexts
+    }
 
     public getColors() {
         return this.colors
