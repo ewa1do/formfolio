@@ -1,14 +1,30 @@
+import { useContext } from 'react'
 import { useWorkExperience } from '../../hooks/useWorkExperience'
-import Utils from '../../utils'
+import { Button } from '../UI/Button'
+import { UserContext } from '../../contexts/userContext'
+import utils from '../../utils'
 
 interface Props {
-    onClick: () => void
+    onClick: {
+        increase: () => void
+        decrease: () => void
+    }
 }
 
-const defaultLength = Utils.getDefaultWorkExpLength()
+const defaultLength = utils.getDefaultWorkExpLength()
 
 export function WorkExperience({ onClick }: Props) {
     const { handleStateIndex, workExp } = useWorkExperience()
+    const { decrease, increase } = onClick
+
+    const { selectedLang, isModeChanged } = useContext(UserContext)
+
+    const defaultClass = `px-1 bg-transparent border-2 rounded-md ${
+        !isModeChanged ? 'border-aqua-50' : 'border-aqua-100'
+    } md:w-2/5 my-1`
+
+    const { charge, company, description } =
+        utils.getAppTexts().workExperiencePlaceholders
 
     return (
         <section>
@@ -18,30 +34,45 @@ export function WorkExperience({ onClick }: Props) {
                         <div>
                             <input
                                 type="text"
-                                placeholder="charge exg: Backend developer"
+                                placeholder={charge[selectedLang]}
                                 name="charge"
                                 onChange={(e) => handleStateIndex(e, i)}
                                 value={workExp[i].charge}
+                                className={defaultClass}
                             />{' '}
                             <span>@</span>{' '}
                             <input
                                 type="text"
-                                placeholder="company name: exg. Microsoft"
+                                placeholder={company[selectedLang]}
                                 name="company"
                                 onChange={(e) => handleStateIndex(e, i)}
                                 value={workExp[i].company}
+                                className={defaultClass}
                             />
                         </div>
                         <textarea
                             name="description"
-                            placeholder="What was your main tasks there"
+                            placeholder={description[selectedLang]}
                             onChange={(e) => handleStateIndex(e, i)}
                             value={workExp[i].description}
+                            className={`px-1 my-2 bg-transparent border-2 rounded-md ${
+                                !isModeChanged
+                                    ? 'border-aqua-50'
+                                    : 'border-aqua-100'
+                            } min-h-[5rem]`}
                         ></textarea>
                     </article>
                 )
             })}
-            <button onClick={onClick}>next</button>
+
+            <Button
+                onClick={decrease}
+                value={selectedLang === 'EN' ? 'Prev' : 'Anterior'}
+            />
+            <Button
+                onClick={increase}
+                value={selectedLang === 'EN' ? 'Next' : 'Siguiente'}
+            />
         </section>
     )
 }

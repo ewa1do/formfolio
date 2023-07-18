@@ -2,6 +2,7 @@ import { Input } from '../UI/Input'
 import { Choices } from '../../models'
 import { useContext } from 'react'
 import { UserContext } from '../../contexts/userContext'
+import { Button } from '../UI/Button'
 
 type ValidData = {
     name: string
@@ -16,7 +17,7 @@ interface Props {
 }
 
 export function InputData({ onClick, data, validField }: Props) {
-    const { selectedLang, isModeChanged } = useContext(UserContext)
+    const { selectedLang } = useContext(UserContext)
 
     return (
         <>
@@ -27,14 +28,11 @@ export function InputData({ onClick, data, validField }: Props) {
                     label={field.label}
                 />
             ))}
-            <button
+
+            <Button
                 onClick={onClick}
-                className={`border-2 p-2 rounded-md mt-8 ${
-                    !isModeChanged ? 'border-aqua-50' : 'border-aqua-100'
-                }`}
-            >
-                {selectedLang === 'EN' ? 'Next' : 'Siguiente'}
-            </button>
+                value={selectedLang === 'EN' ? 'Next' : 'Siguiente'}
+            />
         </>
     )
 }
