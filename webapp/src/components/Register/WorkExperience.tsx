@@ -24,7 +24,7 @@ export function WorkExperience({ onClick }: Props) {
     } md:w-2/5 my-1`
 
     const { charge, company, description } =
-        utils.getAppTexts().workExperiencePlaceholders
+        utils.getAppTexts().workExperience.placeholders
 
     return (
         <section>

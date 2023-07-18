@@ -1,5 +1,8 @@
-import { ChangeEvent, useState } from 'react'
+import { ChangeEvent, useContext, useState } from 'react'
+import { UserContext } from '../../contexts/userContext'
+import { Button } from '../UI/Button'
 import { LOCALSTORAGE_KEYS } from '../../models'
+import utils from '../../utils'
 
 enum EducationEnum {
     TITLE = 'title',
@@ -11,10 +14,26 @@ interface IEducation {
     institution: string
 }
 
-export function Education({ onClick }: { onClick: () => void }) {
+interface Props {
+    onClick: {
+        increase: () => void
+        decrease: () => void
+    }
+}
+
+export function Education({ onClick }: Props) {
     const [education, setEducation] = useState<IEducation>(
-        JSON.parse(localStorage.getItem(LOCALSTORAGE_KEYS.EDUCATION))
+        JSON.parse(localStorage.getItem(LOCALSTORAGE_KEYS.EDUCATION) as string)
     )
+
+    const { selectedLang, isModeChanged } = useContext(UserContext)
+    const { decrease, increase } = onClick
+
+    const { institution, title } = utils.getAppTexts().education.placeholders
+
+    const defaultClass = `px-1 bg-transparent border-2 rounded-md ${
+        !isModeChanged ? 'border-aqua-50' : 'border-aqua-100'
+    } md:w-2/5 my-1`
 
     if (!education) {
         const initialData: IEducation = {
@@ -51,19 +70,36 @@ export function Education({ onClick }: { onClick: () => void }) {
     }
 
     return (
-        <section className="flex flex-col my-8">
-            <input
-                type="text"
-                name={EducationEnum.TITLE}
-                onChange={handleInput}
-            />
-            <input
-                type="text"
-                name={EducationEnum.INSTITUTION}
-                onChange={handleInput}
+        <section className="my-8">
+            <article>
+                <input
+                    type="text"
+                    name={EducationEnum.TITLE}
+                    onChange={handleInput}
+                    value={education.title}
+                    className={defaultClass}
+                    placeholder={title[selectedLang]}
+                />
+                <span> @ </span>
+                <input
+                    type="text"
+                    name={EducationEnum.INSTITUTION}
+                    onChange={handleInput}
+                    value={education.institution}
+                    className={defaultClass}
+                    placeholder={institution[selectedLang]}
+                />
+            </article>
+
+            <Button
+                onClick={decrease}
+                value={selectedLang === 'EN' ? 'Prev' : 'Anterior'}
             />
 
-            <button onClick={onClick}>Next</button>
+            <Button
+                onClick={increase}
+                value={selectedLang === 'EN' ? 'Next' : 'Siguiente'}
+            />
         </section>
     )
 }
