@@ -57,6 +57,9 @@ class Utilities {
         {
             name: 'resume',
         },
+        {
+            name: 'behance',
+        },
     ]
 
     protected colors = [
