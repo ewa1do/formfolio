@@ -21,6 +21,11 @@ export interface Choices {
 export interface FormFolioTexts {
     appMessages: Choices[]
     workExperience: Choices
+    workExperiencePlaceholders: {
+        charge: Choices
+        company: Choices
+        description: Choices
+    }
     coverLetter: {
         generate: Choices
         history: Choices

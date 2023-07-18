@@ -75,9 +75,9 @@ class Utilities {
                 ES: 'Bienvenid@ a FormFolio, la única app que necesitarás para llenar formularios de empleo,\n empecemos por agregar tu infomación personal',
             },
             {
-                EN: "Add your last work experience if you have, if not don't worry I'm sure you're going to find it soon",
+                EN: "Add your work experience if you have, if not don't worry I'm sure you're going to find it soon",
 
-                ES: 'Agrega tu última experiencia laboral, si no posees no te preocupes, estoy seguro que pronto encontrarás algo',
+                ES: 'Agrega tu experiencia laboral, si no posees no te preocupes, estoy seguro que pronto encontrarás algo',
             },
             {
                 EN: 'Add your last educational background',
@@ -127,6 +127,20 @@ class Utilities {
         skills: {
             EN: 'Technical Skills',
             ES: 'Habilidades Técnicas',
+        },
+        workExperiencePlaceholders: {
+            charge: {
+                EN: 'Backend Developer',
+                ES: 'Desarrollador Backend',
+            },
+            company: {
+                EN: 'Microsoft',
+                ES: 'Mercado Libre',
+            },
+            description: {
+                EN: 'What were your job responsibilities?',
+                ES: 'Cuáles fueron tus responsabilidades?',
+            },
         },
     }
 
