@@ -20,11 +20,13 @@ export interface Choices {
 }
 export interface FormFolioTexts {
     appMessages: Choices[]
-    workExperience: Choices
-    workExperiencePlaceholders: {
-        charge: Choices
-        company: Choices
-        description: Choices
+    workExperience: {
+        title: Choices
+        placeholders: {
+            charge: Choices
+            company: Choices
+            description: Choices
+        }
     }
     coverLetter: {
         generate: Choices
@@ -35,7 +37,13 @@ export interface FormFolioTexts {
         }
         button: Choices
     }
-    education: Choices
+    education: {
+        title: Choices
+        placeholders: {
+            title: Choices
+            institution: Choices
+        }
+    }
     skills: Choices
 }
 

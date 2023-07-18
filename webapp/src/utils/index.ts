@@ -80,8 +80,8 @@ class Utilities {
                 ES: 'Agrega tu experiencia laboral, si no posees no te preocupes, estoy seguro que pronto encontrarás algo',
             },
             {
-                EN: 'Add your last educational background',
-                ES: 'Agrega la última educacion formal que recibiste',
+                EN: 'Add your last educational background, can be College, Courses, Bootcamps...',
+                ES: 'Agrega la última educacion formal que recibiste, puede ser Universidad, Cursos, Bootcamps...',
             },
             {
                 EN: 'Add links to your sites, this way it will easier for you to fill forms, just copy and paste',
@@ -93,8 +93,24 @@ class Utilities {
             },
         ],
         workExperience: {
-            EN: 'Work Experience',
-            ES: 'Experiencia Laboral',
+            title: {
+                EN: 'Work Experience',
+                ES: 'Experiencia Laboral',
+            },
+            placeholders: {
+                charge: {
+                    EN: 'Backend Developer',
+                    ES: 'Desarrollador Backend',
+                },
+                company: {
+                    EN: 'Microsoft',
+                    ES: 'Mercado Libre',
+                },
+                description: {
+                    EN: 'What were your job responsibilities?',
+                    ES: 'Cuáles fueron tus responsabilidades?',
+                },
+            },
         },
         coverLetter: {
             generate: {
@@ -121,26 +137,24 @@ class Utilities {
             },
         },
         education: {
-            EN: 'Education',
-            ES: 'Educación',
+            title: {
+                EN: 'Education',
+                ES: 'Educación',
+            },
+            placeholders: {
+                institution: {
+                    EN: 'Educational Center',
+                    ES: 'Centro Educativo',
+                },
+                title: {
+                    EN: 'Title Obtained',
+                    ES: 'Título Conseguido',
+                },
+            },
         },
         skills: {
             EN: 'Technical Skills',
             ES: 'Habilidades Técnicas',
-        },
-        workExperiencePlaceholders: {
-            charge: {
-                EN: 'Backend Developer',
-                ES: 'Desarrollador Backend',
-            },
-            company: {
-                EN: 'Microsoft',
-                ES: 'Mercado Libre',
-            },
-            description: {
-                EN: 'What were your job responsibilities?',
-                ES: 'Cuáles fueron tus responsabilidades?',
-            },
         },
     }
 
