@@ -27,6 +27,7 @@ export interface FormFolioTexts {
             company: Choices
             description: Choices
         }
+        noContent: Choices
     }
     coverLetter: {
         generate: Choices
@@ -44,7 +45,10 @@ export interface FormFolioTexts {
             institution: Choices
         }
     }
-    skills: Choices
+    skills: {
+        title: Choices
+        placeholder: Choices
+    }
 }
 
 export interface InfoView {

@@ -1,52 +1,45 @@
-import { useContext, useState } from 'react'
+import { useContext } from 'react'
 import { UserContext } from '../../contexts/userContext'
-import { SkillsArea } from './SkillsArea'
-import { InputData } from './InputData'
-import { LOCALSTORAGE_KEYS } from '../../models'
-import Utils from '../../utils'
-import { WorkExperience } from './WorkExperience'
-import { Education } from '.'
-
-const appMessages = [
-    'Welcome to formfolio, the only app you will need to fill job forms, lets begin adding your personal information',
-    'If you have work experience add it if not you can move on, Im sure youre going to find it soon',
-    'Add your last educational background',
-    'Add links to your sites, this way it will easier for you to fill forms, just copy and paste',
-    'Finally add some skills you have',
-]
+import { useRegister } from '../../hooks/useRegister'
+import { Education, InputData, SkillsArea, WorkExperience } from './index'
+import utils from '../../utils'
 
 export function RegisterForm() {
-    const { setIsRegistered } = useContext(UserContext)
-    const [option, setOption] = useState<number>(0)
-
-    function handleRegister() {
-        localStorage.setItem(LOCALSTORAGE_KEYS.ISREGISTERED, '1')
-
-        const register = Number(
-            localStorage.getItem(LOCALSTORAGE_KEYS.ISREGISTERED)
-        )
-
-        setIsRegistered(Boolean(register))
-    }
-
-    function increaseOption(): void {
-        setOption((prev) => prev + 1)
-    }
+    const { selectedLang, isModeChanged } = useContext(UserContext)
+    const { decreaseOption, handleRegister, increaseOption, option } =
+        useRegister()
 
     const renderList = [
         <InputData
-            onClick={increaseOption}
-            data={Utils.getUserInfo()}
+            onClick={{ increase: increaseOption }}
+            data={utils.getUserInfo()}
             validField="profile"
         />,
-        <WorkExperience onClick={increaseOption} />,
-        <Education onClick={increaseOption} />,
-        <InputData
-            data={Utils.getUserLinks()}
-            onClick={increaseOption}
-            validField="link"
+        <WorkExperience
+            onClick={{
+                increase: increaseOption,
+                decrease: decreaseOption,
+            }}
         />,
-        <SkillsArea fieldName="formfolio-skills" />,
+        <Education
+            onClick={{
+                increase: increaseOption,
+                decrease: decreaseOption,
+            }}
+        />,
+        <InputData
+            data={utils.getUserLinks()}
+            onClick={{
+                increase: increaseOption,
+                decrease: decreaseOption,
+            }}
+            validField="link"
+            icons
+        />,
+        <SkillsArea
+            fieldName="formfolio-skills"
+            onClick={{ decrease: decreaseOption, save: handleRegister }}
+        />,
     ]
 
     return (
@@ -54,24 +47,22 @@ export function RegisterForm() {
             onSubmit={(e) => {
                 e.preventDefault()
             }}
+            className={`md:p-4 md:border-2 rounded-md md:shadow-lg ${
+                !isModeChanged
+                    ? 'text-light border-aqua-50 md:shadow-aqua-100'
+                    : 'text-dark border-aqua-100 md:shadow-aqua-50'
+            } md:w-3/4 md:ml-[12.5%] lg:w-3/5 lg:ml-[20%]`}
         >
-            <h2>{appMessages[option]}</h2>
-            {renderList[option]}
+            <h2 className="mt-6">
+                {utils.getAppTexts().appMessages[option][selectedLang]}
+            </h2>
+            <hr
+                className={`my-3 border-1 ${
+                    !isModeChanged ? 'border-light' : 'border-dark'
+                }`}
+            />
 
-            {option == renderList.length - 1 && (
-                <button onClick={handleRegister}>Save!</button>
-            )}
+            {renderList[option]}
         </form>
     )
 }
-
-// eduardo
-// isRegistered	1
-// formfolio-profile-twitter	@edu_dev
-// formfolio-profile-linkedin	https://www.linkedin.com/in/eduardo-vera-612626191/
-// formfolio-profile-lastname	vera
-// formfolio-profile-resume	https://docs.google.com/document/d/1jRY0CkLx-nThJT2cvT1DXTk8pZqacIemK6pc6EwVAM8/edit?usp=sharing
-// formfolio-profile-phone_number	584246913238
-// formfolio-profile-email	this.eduardovera@gmail.com
-// formfolio-profile-portfolio	https://eduardovera.vercel.app
-// formfolio-profile-job_title	software developer

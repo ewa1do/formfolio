@@ -92,7 +92,7 @@ class Utilities {
             },
             {
                 EN: 'Finally add some skills you have',
-                ES: 'Finalmente agrega algunas habilidades que poseas',
+                ES: 'Finalmente agrega algunas habilidades que sepas',
             },
         ],
         workExperience: {
@@ -113,6 +113,10 @@ class Utilities {
                     EN: 'What were your job responsibilities?',
                     ES: 'Cuáles fueron tus responsabilidades?',
                 },
+            },
+            noContent: {
+                EN: 'Add some experience, remember that everything counts. Bootcamps, freelancing...',
+                ES: 'Agrega alguna experiencia que poseas, recuerda que todo suma. Bootcamps, freelancing...',
             },
         },
         coverLetter: {
@@ -156,8 +160,14 @@ class Utilities {
             },
         },
         skills: {
-            EN: 'Technical Skills',
-            ES: 'Habilidades Técnicas',
+            title: {
+                EN: 'Technical Skills',
+                ES: 'Habilidades Técnicas',
+            },
+            placeholder: {
+                EN: 'Separate your skills by Commas',
+                ES: 'Separa tus skills por Comas',
+            },
         },
     }
 
