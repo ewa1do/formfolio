@@ -1,17 +1,10 @@
-import { useState } from 'react'
+import { useContext } from 'react'
+import { UserContext } from '../../contexts/userContext'
 import { LOCALSTORAGE_KEYS } from '../../models'
 import utils from '../../utils'
 
 export function LanguageList() {
-    const formfolioLang = localStorage.getItem(LOCALSTORAGE_KEYS.LANG)
-
-    if (!formfolioLang) {
-        utils.setFormFolioLanguage()
-    }
-
-    const [selectedLang, setSelectedLang] = useState(
-        utils.getLanguages().find((lang) => lang === formfolioLang) || 'EN'
-    )
+    const { selectedLang, setSelectedLang } = useContext(UserContext)
 
     function changeLang(e: React.ChangeEvent) {
         const target = e.target as HTMLSelectElement

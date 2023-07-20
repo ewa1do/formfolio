@@ -17,7 +17,7 @@ export function Input({ fieldName, type, label }: Props) {
 
     return (
         <div className="flex my-2 items-center">
-            <label className="text-base mr-2" htmlFor={fieldName}>
+            <label className="text-base mr-2 capitalize" htmlFor={fieldName}>
                 {label
                     ? label[selectedLang]
                     : Utils.sanitizeInput(fieldName, true)}
@@ -31,7 +31,7 @@ export function Input({ fieldName, type, label }: Props) {
                 value={getValue(fieldName)}
                 className={`px-1 bg-transparent border-2 rounded-md ${
                     !isModeChanged ? 'border-aqua-50' : 'border-aqua-100'
-                } md:w-2/4 md:my-1`}
+                } md:w-3/4 md:my-1`}
             />
         </div>
     )
