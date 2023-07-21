@@ -49,6 +49,7 @@ export interface FormFolioTexts {
         title: Choices
         placeholder: Choices
     }
+    notification: Choices
 }
 
 export interface InfoView {

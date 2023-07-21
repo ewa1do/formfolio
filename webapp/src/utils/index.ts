@@ -169,6 +169,10 @@ class Utilities {
                 ES: 'Separa tus skills por Comas',
             },
         },
+        notification: {
+            EN: 'Text copied to Clipboard!',
+            ES: 'Texto copiado al Portapapeles!',
+        },
     }
 
     public getAppTexts() {
@@ -269,6 +273,19 @@ class Utilities {
         } catch (error) {
             console.error('ERROR', error)
         }
+    }
+
+    generateCoverLetter(info: any) {
+        return `I am excited to apply for the [Job Title] position at [Company Name]. With a proven track record in [Your Field of Expertise] and a deep passion for [Industry/Domain], 
+        I believe I can bring valuable contributions to your esteemed organization. Throughout my career, I have honed my skills in [Key Skill 1], [Key Skill 2], and [Key Skill 3], which I believe align perfectly with the requirements for the [Job Title] role. My experience includes successfully [Briefly mention your relevant experience or achievements, e.g., leading projects, driving process improvements, or achieving business goals]. Additionally, I am adept at [Another skill or quality that makes you a great fit for the position, e.g., collaborating with cross-functional teams or adapting to dynamic challenges].
+        I have had the privilege of working at [Previous Company/Organization], where I had the opportunity to [Briefly describe your responsibilities and accomplishments at your previous role]. My tenure at [Previous Company/Organization] further nurtured my ability to [mention a key strength or quality, e.g., communicate effectively, solve complex problems, or handle high-pressure situations], which I believe will be an asset in contributing to [Company Name]'s continued success.
+        I have been following [Company Name]'s trajectory closely and am highly impressed by your commitment to [Company's Mission/Vision] and the transformative solutions you provide in the [Industry/Domain]. Your recent [Project/Product/Initiative] has captured my attention, and I am eager to contribute my expertise to support your mission and contribute to the growth of [Company Name].
+        As a highly motivated and proactive professional, I am confident that my dedication and skills make me a strong candidate for the [Job Title] position. I am excited about the opportunity to join a talented team of professionals and collaborate on meaningful projects that positively impact the industry.
+        Thank you for considering my application. I am eager to discuss how my qualifications and enthusiasm align with [Company Name]'s needs. Please find my resume attached for your review. I look forward to the possibility of meeting with you to further discuss my candidacy and learn more about the exciting opportunities at [Company Name].
+        You can reach me at [Email Address] or [Phone Number] to schedule a call or interview at your convenience. Thank you for your time and consideration.
+        Sincerely,
+        [Your Name]
+        `
     }
 
     /**
